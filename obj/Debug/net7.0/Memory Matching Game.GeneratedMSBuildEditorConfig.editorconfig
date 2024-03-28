@@ -13,31 +13,31 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Memory_Matching_Game
 build_property.RootNamespace = Memory_Matching_Game
-build_property.ProjectDir = C:\Users\User\Desktop\Memory Matching Game\
+build_property.ProjectDir = C:\Users\User\Desktop\Blazor-MatchingGame\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\Memory Matching Game
+build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\Blazor-MatchingGame
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/User/Desktop/Memory Matching Game/App.razor]
+[C:/Users/User/Desktop/Blazor-MatchingGame/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Memory Matching Game/Components/GameBoardComponent.razor]
+[C:/Users/User/Desktop/Blazor-MatchingGame/Components/GameBoardComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xHYW1lQm9hcmRDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Memory Matching Game/MainLayout.razor]
+[C:/Users/User/Desktop/Blazor-MatchingGame/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Memory Matching Game/Pages/Index.razor]
+[C:/Users/User/Desktop/Blazor-MatchingGame/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Memory Matching Game/_Imports.razor]
+[C:/Users/User/Desktop/Blazor-MatchingGame/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
