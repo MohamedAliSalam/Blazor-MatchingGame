@@ -1,0 +1,128 @@
+﻿<h1>Memory Matching Game</h1>
+
+@if (GameComplete)
+{
+    <div class="game-complete">Congratulations! You completed the game.</div>
+}
+
+<div class="stopwatch">@stopwatch.Elapsed.ToString(@"mm\:ss")</div>
+
+<div class="game-board">
+    @foreach (var card in Cards)
+    {
+        <div class="card @(card.IsFlipped ? "flipped" : "")" @onclick="() => FlipCard(card)">
+            <div class="card-content">
+                @if (card.IsFlipped)
+                {
+                    @card.Value
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<button class="reset-button" @onclick="ResetGame">Reset Game</button>
+
+
+
+@code {
+    class Card
+    {
+        public string Value { get; set; }
+        public bool IsFlipped { get; set; }
+    }
+
+    private const int TotalPairs = 8;
+    private List<Card> Cards = new List<Card>();
+    private Card selectedCard = null;
+    private bool GameComplete = false;
+    private Stopwatch stopwatch = new Stopwatch();
+    private bool IsProcessing = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        InitializeGame();
+        await StartStopwatch();
+    }
+
+    private async Task StartStopwatch()
+    {
+        while (true)
+        {
+            await Task.Delay(1000); // Update every second
+            if (!GameComplete && stopwatch.IsRunning)
+            {
+                InvokeAsync(StateHasChanged);
+            }
+        }
+    }
+
+    private void InitializeGame()
+    {
+        Cards.Clear();
+        for (int i = 0; i < TotalPairs; i++)
+        {
+            Cards.Add(new Card { Value = $"{i}", IsFlipped = false });
+            Cards.Add(new Card { Value = $"{i}", IsFlipped = false });
+        }
+        ShuffleCards();
+        GameComplete = false;
+        stopwatch.Reset();
+    }
+
+    private void ShuffleCards()
+    {
+        var rand = new Random();
+        Cards = Cards.OrderBy(c => rand.Next()).ToList();
+    }
+
+    private async Task FlipCard(Card card)
+    {
+        if (GameComplete || card.IsFlipped || selectedCard == card || IsProcessing)
+            return;
+
+        IsProcessing = true;
+
+        if (selectedCard == null)
+        {
+            selectedCard = card;
+            card.IsFlipped = true;
+            stopwatch.Start();
+        }
+        else
+        {
+            card.IsFlipped = true;
+
+            if (selectedCard != null && selectedCard.Value == card.Value)
+            {
+                selectedCard = null;
+                if (Cards.All(c => c.IsFlipped))
+                {
+                    GameComplete = true;
+                    stopwatch.Stop();
+                }
+            }
+            else
+            {
+                await Task.Delay(500);
+                if (selectedCard != null)
+                {
+                    selectedCard.IsFlipped = false;
+                    card.IsFlipped = false;
+                    selectedCard = null;
+                }
+            }
+        }
+
+        IsProcessing = false;
+        InvokeAsync(StateHasChanged);
+    }
+
+
+    private void ResetGame()
+    {
+        InitializeGame();
+        StateHasChanged();
+    }
+}
